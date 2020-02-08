@@ -119,7 +119,7 @@ public class Fb_1 extends AppCompatActivity {
             return false;
         }
         if (phone.trim().equals("")) {
-            Toast.makeText(this,"手机号码不能为空!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"联系方式不能为空!",Toast.LENGTH_SHORT).show();
             return false;
         }
         if (description.trim().equals("")) {
