@@ -26,7 +26,7 @@ public class MyCollectionDbHelper extends SQLiteOpenHelper {
             "picture blob," +
             "title text," +
             "description text," +
-            "price float," +
+            "price text," +
             "phone text )";
 
     public MyCollectionDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -72,7 +72,7 @@ public class MyCollectionDbHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do {
                 String title = cursor.getString(cursor.getColumnIndex("title"));
-                float price = cursor.getFloat(cursor.getColumnIndex("price"));
+                String price = cursor.getString(cursor.getColumnIndex("price"));
                 String phone = cursor.getString(cursor.getColumnIndex("phone"));
                 String description = cursor.getString(cursor.getColumnIndex("description"));
                 byte[] picture = cursor.getBlob(cursor.getColumnIndex("picture"));

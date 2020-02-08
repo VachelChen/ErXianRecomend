@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mytry32.R;
@@ -27,28 +26,29 @@ public class HomeFragment extends Fragment implements TabLayout.OnTabSelectedLis
     private  Tab1 t1 =new Tab1();
     private Tab2 t2 = new Tab2();
     private Tab3 t3 = new Tab3();
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+    public View onCreateView(LayoutInflater inflater,
+                             @NonNull ViewGroup container,@NonNull  Bundle savedInstanceState) {
+//        homeViewModel =
+//                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         mTitle=new ArrayList<>();
         mFragment=new ArrayList<>();
+
         tabLayout=root.findViewById(R.id.tableLayout);
         viewPager=root.findViewById(R.id.viewPager);
+
         mFragment.add(t1);
         mFragment.add(t2);
         mFragment.add(t3);
 
 
         mTitle.add("闲置");
-        mTitle.add("拼拼");
-        mTitle.add("比赛");
+        mTitle.add("拼单");
+        mTitle.add("组队");
+
+
         MyAdapter adapter = new MyAdapter(getChildFragmentManager(),mTitle, mFragment);
-
-
-
 
         viewPager.setAdapter(adapter);
 

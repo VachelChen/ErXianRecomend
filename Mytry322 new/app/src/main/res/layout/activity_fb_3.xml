@@ -138,6 +138,17 @@
                     android:background="#008577"
                     android:text="发布"
                     android:textColor="#FFF" />
+
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:background="#ff6b6b"
+                    android:text="取消"
+                    android:textColor="#FFF" />
             </LinearLayout>
 
         </LinearLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,10 +17,11 @@ import com.example.mytry32.R;
  */
 public class Tab1 extends Fragment {
 
-
     public Tab1() {
         // Required empty public constructor
     }
+
+
 
 
     @Override
@@ -32,6 +34,8 @@ public class Tab1 extends Fragment {
         recyclerView = (RecyclerView) vv.findViewById(R.id.recycler_1);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));//本来是this 但是framgment没有this
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
         Adapter_1 adapter_1 = new Adapter_1(getContext());//还没有传参数！！！
         recyclerView.setAdapter(adapter_1);

@@ -5,69 +5,91 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytry32.R;
+import com.example.mytry32.bean.Commodity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Adapter_3 extends RecyclerView.Adapter<Adapter_3.myViewHolder> {
 
     private Context context;
 
+    private LayoutInflater layoutInflater;
+
+    private List<Commodity> commodities = new ArrayList<>();
+    //对每一个item保存其位置
+    HashMap<Integer,View> location = new HashMap<>();
+
 
     public Adapter_3(Context context){
         this.context = context;
+        layoutInflater = LayoutInflater.from(context);
     }
+
+    public void setData(List<Commodity> commodities) {
+        this.commodities = commodities;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
+    public Object getItem(int position) {
+        return commodities.get(position);
+    }
+
     @NonNull
     @Override
-    public Adapter_3.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Adapter_3.myViewHolder(LayoutInflater.from(context).inflate(R.layout.item_3,parent,false));
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new myViewHolder(LayoutInflater.from(context).inflate(R.layout.item_3,parent,false));
     }
 
 
+    @Override
+    public int getItemCount() {
+        return commodities.size();
+    }//data.len()
+
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_3.myViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         //设置内容
-        if(position<3){
-            holder.tv.setText("全美数学建模比赛");
-            holder.tvx.setText("现有两名数学专业17级队员，求一位信息学院大佬！！！！！！");
+        holder.tvTitle.setText("闲置出售样例    "+ (position+1) );//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
+        holder.tvDescription.setText("闲置详情    "+ (position+1) );
 
-        }
-        else if( position<6){
-            holder.tv.setText("大学生创新创业比赛");
-        }
-        else{
-            holder.tv.setText("共享杯组队");
-        }
-        holder.date3.setText("截至日期: "+ "12月21日");
         //加入监听！！！点击跳转
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, Xq_3.class);
+                Intent intent=new Intent(context, Xq_1.class);
+                //跳转如何携带信息 ， 调用position 进入相关页面！！！数据流如何！！？
                 context.startActivity(intent);
             }
         });
 
     }
 
-    @Override
-    public int getItemCount() {
-        return 10;//data.lenth
-    }
-
     class myViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv;
-        private TextView tvx;
-        private TextView date3;
+        private ImageView ivCommodity;
+        private TextView tvTitle,tvDescription,tvPrice;
         public myViewHolder(View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.thir_item_tv);
-            tvx = itemView.findViewById(R.id.thir_item_tvx);
-            date3=itemView.findViewById(R.id.date3);
+            tvTitle = itemView.findViewById(R.id.tv_name);
+            tvPrice = itemView.findViewById(R.id.tv_price);
+            tvDescription = itemView.findViewById(R.id.tv_description);
+            ivCommodity = itemView.findViewById(R.id.iv_commodity);
+
         }
     }
+
 }

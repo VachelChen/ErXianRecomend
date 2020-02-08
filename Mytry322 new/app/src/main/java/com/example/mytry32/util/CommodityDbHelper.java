@@ -25,7 +25,7 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
             "id integer primary key autoincrement," +
             "title text," +
             "category text," +
-            "price float," +
+            "price text," +
             "phone text," +
             "description text," +
             "picture blob," +
@@ -77,7 +77,7 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
             do {
                 String title = cursor.getString(cursor.getColumnIndex("title"));
                 String category = cursor.getString(cursor.getColumnIndex("category"));
-                float price = cursor.getFloat(cursor.getColumnIndex("price"));
+                String price = cursor.getString(cursor.getColumnIndex("price"));
                 String phone = cursor.getString(cursor.getColumnIndex("phone"));
                 String description = cursor.getString(cursor.getColumnIndex("description"));
                 byte[] picture = cursor.getBlob(cursor.getColumnIndex("picture"));
@@ -107,7 +107,7 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
             do {
                 String title = cursor.getString(cursor.getColumnIndex("title"));
                 String category = cursor.getString(cursor.getColumnIndex("category"));
-                float price = cursor.getFloat(cursor.getColumnIndex("price"));
+                String price = cursor.getString(cursor.getColumnIndex("price"));
                 String phone = cursor.getString(cursor.getColumnIndex("phone"));
                 String description = cursor.getString(cursor.getColumnIndex("description"));
                 byte[] picture = cursor.getBlob(cursor.getColumnIndex("picture"));
@@ -153,7 +153,7 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             do{
                 String title = cursor.getString(cursor.getColumnIndex("title"));
-                float price = cursor.getFloat(cursor.getColumnIndex("price"));
+                String price = cursor.getString(cursor.getColumnIndex("price"));
                 String description = cursor.getString(cursor.getColumnIndex("description"));
                 byte[] picture = cursor.getBlob(cursor.getColumnIndex("picture"));
                 Commodity commodity = new Commodity();

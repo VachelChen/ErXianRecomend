@@ -6,67 +6,90 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytry32.R;
+import com.example.mytry32.bean.Commodity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Adapter_2 extends RecyclerView.Adapter<Adapter_2.myViewHolder> {
 
     private Context context;
 
+    private LayoutInflater layoutInflater;
+
+    private List<Commodity> commodities = new ArrayList<>();
+    //对每一个item保存其位置
+    HashMap<Integer,View> location = new HashMap<>();
+
 
     public Adapter_2(Context context){
         this.context = context;
+        layoutInflater = LayoutInflater.from(context);
     }
+
+    public void setData(List<Commodity> commodities) {
+        this.commodities = commodities;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
+    public Object getItem(int position) {
+        return commodities.get(position);
+    }
+
     @NonNull
     @Override
-    public Adapter_2.myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        return new Adapter_2.myViewHolder(LayoutInflater.from(context).inflate(R.layout.item_2,parent,false));
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new myViewHolder(LayoutInflater.from(context).inflate(R.layout.item_2,parent,false));
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull Adapter_2.myViewHolder holder, int position) {
+    public int getItemCount() {
+        return commodities.size();
+    }//data.len()
+
+
+    @Override
+    public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         //设置内容
-        holder.tv.setText("拼奶茶");
-        holder.date2.setText("截止 ："+"永久有效");
-        holder.tp.setImageResource(R.mipmap.nc);
-        holder.po.setMax(10);
-        holder.po.setProgress(5);
+        holder.tvTitle.setText("闲置出售样例    "+ (position+1) );//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
+        holder.tvDescription.setText("闲置详情    "+ (position+1) );
+
         //加入监听！！！点击跳转
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, Xq_2.class);
+                Intent intent=new Intent(context, Xq_1.class);
+                //跳转如何携带信息 ， 调用position 进入相关页面！！！数据流如何！！？
                 context.startActivity(intent);
             }
         });
 
     }
 
-    @Override
-    public int getItemCount() {
-        return 3;//data.lenth
-    }
-
     class myViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv;
-        private TextView tvx;
-        private ImageView tp;
-        private TextView date2;
-        private ProgressBar po;
-
+        private ImageView ivCommodity;
+        private TextView tvTitle,tvDescription,tvPrice;
         public myViewHolder(View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.second_item_tv);
-            tvx = itemView.findViewById(R.id.second_item_tvx);
-            tp= itemView.findViewById(R.id.lst2);
-            date2=itemView.findViewById(R.id.date2);
-            po=itemView.findViewById(R.id.progressBar2);
+            tvTitle = itemView.findViewById(R.id.tv_name);
+            tvPrice = itemView.findViewById(R.id.tv_price);
+            tvDescription = itemView.findViewById(R.id.tv_description);
+            ivCommodity = itemView.findViewById(R.id.iv_commodity);
+
         }
     }
+
 }

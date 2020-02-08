@@ -59,7 +59,7 @@ public class MyCollectionAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if(location.get(position) == null){
-            convertView = layoutInflater.inflate(R.layout.layout_my_collection,null);
+            convertView = layoutInflater.inflate(R.layout.item_1,null);
             Collection collection = (Collection) getItem(position);
             holder = new ViewHolder(convertView,collection);
             location.put(position,convertView);

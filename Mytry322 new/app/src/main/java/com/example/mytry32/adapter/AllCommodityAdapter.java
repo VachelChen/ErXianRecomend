@@ -59,7 +59,7 @@ public class AllCommodityAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if(location.get(position) == null){
-            convertView = layoutInflater.inflate(R.layout.layout_all_commodity,null);
+            convertView = layoutInflater.inflate(R.layout.item_1,null);
             Commodity commodity = (Commodity) getItem(position);
             holder = new ViewHolder(convertView,commodity);
             //保存view的位置position
@@ -79,14 +79,14 @@ public class AllCommodityAdapter extends BaseAdapter {
 
         public ViewHolder(View itemView, Commodity commodity) {
             tvTitle = itemView.findViewById(R.id.tv_name);
-            tvType = itemView.findViewById(R.id.tv_type);
+            //tvType = itemView.findViewById(R.id.tv_type);
             tvPrice = itemView.findViewById(R.id.tv_price);
             tvDescription = itemView.findViewById(R.id.tv_description);
             ivCommodity = itemView.findViewById(R.id.iv_commodity);
             tvTitle.setText(commodity.getTitle());
             tvDescription.setText(commodity.getDescription());
             tvPrice.setText(String.valueOf(commodity.getPrice())+"元");
-            tvType.setText(commodity.getCategory());
+            //tvType.setText(commodity.getCategory());
             byte[] picture = commodity.getPicture();
             //从字节数组中解码生成不可变的位图
             //public static Bitmap decodeByteArray(byte[] data, int offset, int length)

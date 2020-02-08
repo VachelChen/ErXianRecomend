@@ -12,27 +12,60 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytry32.R;
+import com.example.mytry32.bean.Commodity;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Adapter_1 extends RecyclerView.Adapter<Adapter_1.myViewHolder> {
 
     private Context context;
 
+    private LayoutInflater layoutInflater;
+
+    private List<Commodity> commodities = new ArrayList<>();
+    //对每一个item保存其位置
+    HashMap<Integer,View> location = new HashMap<>();
 
 
     public Adapter_1(Context context){
         this.context = context;
+        layoutInflater = LayoutInflater.from(context);
     }
+
+    public void setData(List<Commodity> commodities) {
+        this.commodities = commodities;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
+    public Object getItem(int position) {
+        return commodities.get(position);
+    }
+
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new myViewHolder(LayoutInflater.from(context).inflate(R.layout.item_1,parent,false));
     }
 
+
+    @Override
+    public int getItemCount() {
+        return 2;
+    }//data.len()
+
+
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         //设置内容
-        holder.tv.setText("闲置出售样例    "+ (position+1) );//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
-        holder.tvx.setText("闲置详情    "+ (position+1) );
+        holder.tvTitle.setText("闲置出售样例    "+ (position+1) );//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
+        holder.tvDescription.setText("闲置详情    "+ (position+1) );
 
         //加入监听！！！点击跳转
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -46,21 +79,17 @@ public class Adapter_1 extends RecyclerView.Adapter<Adapter_1.myViewHolder> {
 
     }
 
-    @Override
-    public int getItemCount() {
-        return 5;
-    }//data.len()
-
     class myViewHolder extends RecyclerView.ViewHolder{
-        private TextView tv;
-        private TextView tvx;
-        private ImageView tp;
+        private ImageView ivCommodity;
+        private TextView tvTitle,tvDescription,tvPrice;
         public myViewHolder(View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.first_item_tv);
-            tvx = itemView.findViewById(R.id.first_item_tvx);
-            tp= itemView.findViewById(R.id.lst);
+            tvTitle = itemView.findViewById(R.id.tv_name);
+            tvPrice = itemView.findViewById(R.id.tv_price);
+            tvDescription = itemView.findViewById(R.id.tv_description);
+            ivCommodity = itemView.findViewById(R.id.iv_commodity);
 
         }
     }
+
 }

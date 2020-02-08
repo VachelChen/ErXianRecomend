@@ -13,7 +13,7 @@ public class Commodity {
     //类别
     private String category;
     //价格
-    private float price;
+    private String price;
     //联系方式
     private String phone;
     //商品描述
@@ -47,11 +47,11 @@ public class Commodity {
         this.category = category;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

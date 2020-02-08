@@ -16,7 +16,7 @@ public class Collection {
     //商品描述
     private String description;
     //商品价格
-    private float price;
+    private String price;
     //联系方式
     private String phone;
 
@@ -52,11 +52,11 @@ public class Collection {
         this.description = description;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

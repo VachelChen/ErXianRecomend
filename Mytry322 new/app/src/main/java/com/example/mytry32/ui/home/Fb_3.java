@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -28,7 +27,6 @@ import java.io.ByteArrayOutputStream;
  */
 public class Fb_3 extends AppCompatActivity {
 
-    TextView tvStuId;
     ImageView ivPhoto;
     EditText etTitle,etPrice,etPhone,etDescription;
     String spType;
@@ -74,10 +72,9 @@ public class Fb_3 extends AppCompatActivity {
                     commodity.setPicture(byteArray);
                     commodity.setTitle(etTitle.getText().toString());
                     commodity.setCategory(spType);
-                    commodity.setPrice(Float.parseFloat(etPrice.getText().toString()));
+                    commodity.setPrice(etPrice.getText().toString());
                     commodity.setPhone(etPhone.getText().toString());
                     commodity.setDescription(etDescription.getText().toString());
-                    commodity.setStuId(tvStuId.getText().toString());
                     if (dbHelper.AddCommodity(commodity)) {
                         Toast.makeText(getApplicationContext(), "商品信息发布成功!", Toast.LENGTH_SHORT).show();
                         finish();

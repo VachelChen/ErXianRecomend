@@ -59,7 +59,7 @@ public class MyCommodityAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if(location.get(position) == null){
-            convertView = layoutInflater.inflate(R.layout.layout_my_commodity,null);
+            convertView = layoutInflater.inflate(R.layout.item_1,null);
             Commodity commodity = (Commodity) getItem(position);
             holder = new ViewHolder(convertView,commodity);
             location.put(position,convertView);
@@ -78,14 +78,12 @@ public class MyCommodityAdapter extends BaseAdapter {
 
         public ViewHolder(View itemView, Commodity commodity) {
             tvTitle = itemView.findViewById(R.id.tv_name);
-            tvType = itemView.findViewById(R.id.tv_type);
             tvPrice = itemView.findViewById(R.id.tv_price);
             tvDescription = itemView.findViewById(R.id.tv_description);
             ivCommodity = itemView.findViewById(R.id.iv_commodity);
             tvTitle.setText(commodity.getTitle());
             tvDescription.setText(commodity.getDescription());
             tvPrice.setText(String.valueOf(commodity.getPrice())+"元");
-            tvType.setText(commodity.getCategory());
             byte[] picture = commodity.getPicture();
             Bitmap img = BitmapFactory.decodeByteArray(picture,0,picture.length);
             ivCommodity.setImageBitmap(img);
