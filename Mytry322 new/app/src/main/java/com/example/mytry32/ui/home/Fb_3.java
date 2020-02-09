@@ -34,7 +34,7 @@ public class Fb_3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fb_1);
+        setContentView(R.layout.activity_fb_3);
         //选照片
         ivPhoto = findViewById(R.id.iv_photo);
         ivPhoto.setOnClickListener(new View.OnClickListener() {
