@@ -36,6 +36,14 @@ public class Fb_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fb_3);
         //选照片
+        Button btnBack = findViewById(R.id.btn_back);
+        //返回按钮点击事件
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         ivPhoto = findViewById(R.id.iv_photo);
         ivPhoto.setOnClickListener(new View.OnClickListener() {
             @Override

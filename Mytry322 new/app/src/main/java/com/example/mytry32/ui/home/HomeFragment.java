@@ -26,41 +26,58 @@ public class HomeFragment extends Fragment implements TabLayout.OnTabSelectedLis
     private  Tab1 t1 =new Tab1();
     private Tab2 t2 = new Tab2();
     private Tab3 t3 = new Tab3();
+
+    private boolean isGetData = false;
+
     public View onCreateView(LayoutInflater inflater,
                              @NonNull ViewGroup container,@NonNull  Bundle savedInstanceState) {
 //        homeViewModel =
 //                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mTitle=new ArrayList<>();
-        mFragment=new ArrayList<>();
+           View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        tabLayout=root.findViewById(R.id.tableLayout);
-        viewPager=root.findViewById(R.id.viewPager);
+           if(!isGetData) {
+               mTitle = new ArrayList<>();
+               mFragment = new ArrayList<>();
 
-        mFragment.add(t1);
-        mFragment.add(t2);
-        mFragment.add(t3);
+               tabLayout = root.findViewById(R.id.tableLayout);
+               viewPager = root.findViewById(R.id.viewPager);
 
-
-        mTitle.add("闲置");
-        mTitle.add("拼单");
-        mTitle.add("组队");
+               mFragment.add(t1);
+               mFragment.add(t2);
+               mFragment.add(t3);
 
 
-        MyAdapter adapter = new MyAdapter(getChildFragmentManager(),mTitle, mFragment);
+               mTitle.add("闲置");
+               mTitle.add("拼单");
+               mTitle.add("组队");
 
-        viewPager.setAdapter(adapter);
 
-        viewPager.setCurrentItem(0);
-        //为TabLayout设置ViewPager
-        tabLayout.setupWithViewPager(viewPager);
+               MyAdapter adapter = new MyAdapter(getChildFragmentManager(), mTitle, mFragment);
 
-       // 使用ViewPager的适配器
-        tabLayout.setTabsFromPagerAdapter(adapter);
+               viewPager.setAdapter(adapter);
+
+               viewPager.setCurrentItem(0);
+               //为TabLayout设置ViewPager
+               tabLayout.setupWithViewPager(viewPager);
+
+               // 使用ViewPager的适配器
+               tabLayout.setTabsFromPagerAdapter(adapter);
+           }
+           else{
+               isGetData = false;
+           }
+
 
         return root;
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isGetData = false;
+    }
+
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
