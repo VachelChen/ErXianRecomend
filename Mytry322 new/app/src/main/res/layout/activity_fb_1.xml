@@ -123,6 +123,13 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@mipmap/add" />
 
+            <TextView
+                android:id="@+id/tv_student_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="userid"
+                android:gravity="right"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

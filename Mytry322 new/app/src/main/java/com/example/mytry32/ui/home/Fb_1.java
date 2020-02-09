@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import java.io.ByteArrayOutputStream;
  */
 public class Fb_1 extends AppCompatActivity {
 
+    TextView tvStuId;
     ImageView ivPhoto;
     EditText etTitle,etPrice,etPhone,etDescription;
     String spType;
@@ -53,7 +55,9 @@ public class Fb_1 extends AppCompatActivity {
                 startActivityForResult(intent,1);
             }
         });
-
+        tvStuId = findViewById(R.id.tv_student_id);
+        final Bundle bundle = this.getIntent().getExtras();
+        tvStuId.setText(bundle.getString("username"));
         etTitle = findViewById(R.id.fb_bt1);
         etPrice = findViewById(R.id.fb_jiage1);
         etPhone = findViewById(R.id.fb_lianxifangshi1);
@@ -82,6 +86,7 @@ public class Fb_1 extends AppCompatActivity {
                     commodity.setCategory(spType);
                     commodity.setPrice(etPrice.getText().toString());
                     commodity.setPhone(etPhone.getText().toString());
+                    commodity.setStuId(tvStuId.getText().toString());
                     commodity.setDescription(etDescription.getText().toString());
                     if (dbHelper.AddCommodity(commodity)) {
                         Toast.makeText(getApplicationContext(), "商品信息发布成功!", Toast.LENGTH_SHORT).show();

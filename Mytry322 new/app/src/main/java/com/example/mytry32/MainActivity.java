@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View headerLayout = navigationView.getHeaderView(0);
+
+        final Bundle bundle = this.getIntent().getExtras();
+        final TextView tvStuNumber = headerLayout.findViewById(R.id.daohang_username);
+        String name ="";
+        if (bundle != null) {
+            name = bundle.getString("username");
+        }
+        tvStuNumber.setText(name);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -60,9 +75,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override
@@ -80,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSingleDialog(){
+        final Bundle bundle = this.getIntent().getExtras();
         final String[] stars = {"闲置","拼单" ,"组队"};
         final AlertDialog.Builder dialog4 = new AlertDialog.Builder (this)
                 .setTitle ("选择你要发布的类型:")
