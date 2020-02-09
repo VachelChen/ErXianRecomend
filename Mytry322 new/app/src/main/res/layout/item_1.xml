@@ -21,6 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="标题"
+            android:maxEms="10"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textSize="26sp" />
 
         <TextView
@@ -29,6 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:paddingLeft="10dp"
+            android:maxEms="20"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:text="详情" />
 
         <TextView
@@ -37,7 +43,10 @@
             android:layout_height="wrap_content"
             android:text="12元"
             android:textColor="@color/colorGreen"
+            android:singleLine="true"
             android:textSize="22sp"
+            android:ellipsize="end"
+            android:maxEms="10"
             android:layout_marginTop="8dp"/>
     </LinearLayout>
 

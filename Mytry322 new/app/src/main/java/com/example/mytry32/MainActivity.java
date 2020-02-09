@@ -97,7 +97,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showSingleDialog(){
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View headerLayout = navigationView.getHeaderView(0);
         final Bundle bundle = this.getIntent().getExtras();
+        final TextView tvStuNumber = headerLayout.findViewById(R.id.daohang_username);
+        String name ="";
+        if (bundle != null) {
+            name = bundle.getString("username");
+        }
+        tvStuNumber.setText(name);
+        final String strNum = tvStuNumber.getText().toString();
+
+
         final String[] stars = {"闲置","拼单" ,"组队"};
         final AlertDialog.Builder dialog4 = new AlertDialog.Builder (this)
                 .setTitle ("选择你要发布的类型:")
@@ -115,6 +128,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if(ide==0){
                             Intent intent= new Intent(MainActivity.this , Fb_1.class);
+                            if (bundle != null) {
+                                //获取学生学号
+                                bundle.putString("user_id", strNum);
+                                intent.putExtras(bundle);
+                            }
                             startActivity(intent);
                         }else if(ide==1){
                             Intent intent= new Intent(MainActivity.this , Fb_2.class);

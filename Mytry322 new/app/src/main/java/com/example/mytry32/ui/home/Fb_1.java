@@ -56,8 +56,7 @@ public class Fb_1 extends AppCompatActivity {
             }
         });
         tvStuId = findViewById(R.id.tv_student_id);
-        final Bundle bundle = this.getIntent().getExtras();
-        tvStuId.setText(bundle.getString("username"));
+        tvStuId.setText("By."+this.getIntent().getStringExtra("user_id"));
         etTitle = findViewById(R.id.fb_bt1);
         etPrice = findViewById(R.id.fb_jiage1);
         etPhone = findViewById(R.id.fb_lianxifangshi1);
@@ -86,7 +85,7 @@ public class Fb_1 extends AppCompatActivity {
                     commodity.setCategory(spType);
                     commodity.setPrice(etPrice.getText().toString());
                     commodity.setPhone(etPhone.getText().toString());
-                    commodity.setStuId(tvStuId.getText().toString());
+                    commodity.setStuId(tvStuId.getText().toString().substring(3,tvStuId.getText().length()));
                     commodity.setDescription(etDescription.getText().toString());
                     if (dbHelper.AddCommodity(commodity)) {
                         Toast.makeText(getApplicationContext(), "商品信息发布成功!", Toast.LENGTH_SHORT).show();
