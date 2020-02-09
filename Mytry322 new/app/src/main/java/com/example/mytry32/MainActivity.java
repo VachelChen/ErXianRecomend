@@ -136,9 +136,19 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }else if(ide==1){
                             Intent intent= new Intent(MainActivity.this , Fb_2.class);
+                            if (bundle != null) {
+                                //获取学生学号
+                                bundle.putString("user_id", strNum);
+                                intent.putExtras(bundle);
+                            }
                             startActivity(intent);
                         }else{
                             Intent intent= new Intent(MainActivity.this , Fb_3.class);
+                            if (bundle != null) {
+                                //获取学生学号
+                                bundle.putString("user_id", strNum);
+                                intent.putExtras(bundle);
+                            }
                             startActivity(intent);
                         }
 

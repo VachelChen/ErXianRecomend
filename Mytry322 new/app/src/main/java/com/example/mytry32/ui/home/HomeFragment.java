@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment implements TabLayout.OnTabSelectedLis
 
     private List<String> mTitle ;
     private List<Fragment> mFragment ;
-    private  Tab1 t1 =new Tab1();
+    private Tab1 t1 = new Tab1();
     private Tab2 t2 = new Tab2();
     private Tab3 t3 = new Tab3();
 
@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment implements TabLayout.OnTabSelectedLis
 
         return root;
     }
+
 
     @Override
     public void onPause() {

@@ -38,7 +38,13 @@ public class Tab3 extends Fragment {
     AllCommodityAdapter adapter;
 
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(null!=dbHelper){
+            dbHelper.close();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

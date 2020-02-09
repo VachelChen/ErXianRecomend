@@ -37,6 +37,13 @@ public class Tab2 extends Fragment {
     CommodityDbHelper dbHelper;
     AllCommodityAdapter adapter;
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(null!=dbHelper){
+            dbHelper.close();
+        }
+    }
 
 
 
