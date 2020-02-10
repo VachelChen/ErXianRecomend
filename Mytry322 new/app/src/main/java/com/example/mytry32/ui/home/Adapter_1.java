@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytry32.R;
 import com.example.mytry32.bean.Commodity;
+import com.example.mytry32.using;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +59,7 @@ public class Adapter_1 extends RecyclerView.Adapter<Adapter_1.myViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull myViewHolder holder, final int position) {
         //设置内容
         holder.tvTitle.setText(data.get(position).getTitle());//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
         holder.tvDescription.setText("商品介绍："+data.get(position).getDescription());
@@ -71,8 +73,19 @@ public class Adapter_1 extends RecyclerView.Adapter<Adapter_1.myViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, Xq_1.class);
-                //跳转如何携带信息 ， 调用position 进入相关页面！！！数据流如何！！？
+//                Intent intent=new Intent(context, Xq_1.class);
+//                //跳转如何携带信息 ， 调用position 进入相关页面！！！数据流如何！！？
+//                context.startActivity(intent);
+                Bundle bundle1 = new Bundle();
+                bundle1.putInt("position",position);
+                bundle1.putByteArray("picture",data.get(position).getPicture());
+                bundle1.putString("title",data.get(position).getTitle());
+                bundle1.putString("description",data.get(position).getDescription());
+                bundle1.putString("price",data.get(position).getPrice());
+                bundle1.putString("phone",data.get(position).getPhone());
+                bundle1.putString("stuId", using.userid);
+                Intent intent = new Intent(context, Xq_1.class);
+                intent.putExtras(bundle1);
                 context.startActivity(intent);
             }
         });
@@ -88,7 +101,6 @@ public class Adapter_1 extends RecyclerView.Adapter<Adapter_1.myViewHolder> {
             tvPrice = itemView.findViewById(R.id.tv_price);
             tvDescription = itemView.findViewById(R.id.tv_description);
             ivCommodity = itemView.findViewById(R.id.iv_commodity);
-
         }
     }
 

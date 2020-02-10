@@ -60,8 +60,8 @@ public class Adapter_2 extends RecyclerView.Adapter<Adapter_2.myViewHolder> {
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         //设置内容
         holder.tvTitle.setText(data.get(position).getTitle());//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
-        holder.tvDescription.setText("拼单位置："+data.get(position).getDescription());
-        holder.tvPrice.setText(data.get(position).getPrice());
+        holder.tvDescription.setText("商品介绍："+data.get(position).getDescription());
+        holder.tvPrice.setText("发起位置："+data.get(position).getPrice());
 
         byte[] picture = data.get(position).getPicture();
         Bitmap img = BitmapFactory.decodeByteArray(picture,0,picture.length);
@@ -73,6 +73,7 @@ public class Adapter_2 extends RecyclerView.Adapter<Adapter_2.myViewHolder> {
             public void onClick(View v) {
                 Intent intent=new Intent(context, Xq_2.class);
                 //跳转如何携带信息 ， 调用position 进入相关页面！！！数据流如何！！？
+
                 context.startActivity(intent);
             }
         });

@@ -64,7 +64,6 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/lianxifangshi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -73,7 +72,7 @@
                 android:text="联系方式：" />
 
             <EditText
-                android:id="@+id/fb_lianxifangshi1"
+                android:id="@+id/fb_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -94,7 +93,7 @@
             <EditText
                 android:id="@+id/editText17"
                 android:layout_width="match_parent"
-                android:layout_height="500px"
+                android:layout_height="59dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
@@ -120,6 +119,13 @@
                 android:layout_marginRight="10dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@mipmap/add" />
+
+            <TextView
+                android:id="@+id/tv_student_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="userid"
+                android:gravity="right"/>
 
             <LinearLayout
                 android:layout_marginTop="50dp"

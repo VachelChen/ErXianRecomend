@@ -61,7 +61,7 @@ public class Adapter_3 extends RecyclerView.Adapter<Adapter_3.myViewHolder> {
         //设置内容
         holder.tvTitle.setText(data.get(position).getTitle());//这里需要一个List<data1>  用于存放数据  Class Data1 是数据类
         holder.tvDescription.setText("队伍情况："+data.get(position).getDescription());
-        holder.tvPrice.setText(data.get(position).getPrice());
+        holder.tvPrice.setText("比赛时间："+data.get(position).getPrice());
 
         byte[] picture = data.get(position).getPicture();
         Bitmap img = BitmapFactory.decodeByteArray(picture,0,picture.length);

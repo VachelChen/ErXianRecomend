@@ -103,12 +103,11 @@ public class MainActivity extends AppCompatActivity {
         tvStuNumber.setText(name);
         final String strNum = tvStuNumber.getText().toString();
 
-
         final String[] stars = {"闲置","拼单" ,"组队"};
         final AlertDialog.Builder dialog4 = new AlertDialog.Builder (this)
                 .setTitle ("选择你要发布的类型:")
                 //参数1：选项。参数2：默认选项。参数3：选中时的事件
-                .setSingleChoiceItems (stars, 0, new DialogInterface.OnClickListener () {
+                .setSingleChoiceItems (stars, 1, new DialogInterface.OnClickListener () {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText (MainActivity.this,"你选择了："+stars[which],Toast.LENGTH_LONG).show ();
@@ -121,27 +120,12 @@ public class MainActivity extends AppCompatActivity {
 
                         if(ide==0){
                             Intent intent= new Intent(MainActivity.this , Fb_1.class);
-                            if (bundle != null) {
-                                //获取学生学号
-                                bundle.putString("user_id", strNum);
-                                intent.putExtras(bundle);
-                            }
                             startActivity(intent);
                         }else if(ide==1){
                             Intent intent= new Intent(MainActivity.this , Fb_2.class);
-                            if (bundle != null) {
-                                //获取学生学号
-                                bundle.putString("user_id", strNum);
-                                intent.putExtras(bundle);
-                            }
                             startActivity(intent);
                         }else{
                             Intent intent= new Intent(MainActivity.this , Fb_3.class);
-                            if (bundle != null) {
-                                //获取学生学号
-                                bundle.putString("user_id", strNum);
-                                intent.putExtras(bundle);
-                            }
                             startActivity(intent);
                         }
 

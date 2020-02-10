@@ -154,11 +154,13 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
             do{
                 String title = cursor.getString(cursor.getColumnIndex("title"));
                 String price = cursor.getString(cursor.getColumnIndex("price"));
+                String phone = cursor.getString(cursor.getColumnIndex("phone"));
                 String description = cursor.getString(cursor.getColumnIndex("description"));
                 byte[] picture = cursor.getBlob(cursor.getColumnIndex("picture"));
                 Commodity commodity = new Commodity();
                 commodity.setTitle(title);
                 commodity.setPrice(price);
+                commodity.setPhone(phone);
                 commodity.setCategory(category);
                 commodity.setDescription(description);
                 commodity.setPicture(picture);

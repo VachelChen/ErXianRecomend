@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mytry32.R;
 import com.example.mytry32.bean.Commodity;
+import com.example.mytry32.using;
 import com.example.mytry32.util.CommodityDbHelper;
 
 import java.io.ByteArrayOutputStream;
@@ -27,6 +29,7 @@ import java.io.ByteArrayOutputStream;
  */
 public class Fb_3 extends AppCompatActivity {
 
+    TextView tvStuId;
     ImageView ivPhoto;
     EditText etTitle,etPrice,etPhone,etDescription;
     String spType;
@@ -53,10 +56,11 @@ public class Fb_3 extends AppCompatActivity {
                 startActivityForResult(intent,1);
             }
         });
-
+        tvStuId = findViewById(R.id.tv_student_id);
+        tvStuId.setText("By."+ using.userid);
         etTitle = findViewById(R.id.fb_bt1);
         etPrice = findViewById(R.id.fb_jiage1);
-        etPhone = findViewById(R.id.fb_lianxifangshi1);
+        etPhone = findViewById(R.id.fb_phone);
         etDescription = findViewById(R.id.editText17);
         spType = "组队";
         Button btnPublish = findViewById(R.id.submit2);
@@ -83,6 +87,7 @@ public class Fb_3 extends AppCompatActivity {
                     commodity.setPrice(etPrice.getText().toString());
                     commodity.setPhone(etPhone.getText().toString());
                     commodity.setDescription(etDescription.getText().toString());
+                    commodity.setStuId(tvStuId.getText().toString().substring(3,tvStuId.getText().length()));
                     if (dbHelper.AddCommodity(commodity)) {
                         Toast.makeText(getApplicationContext(), "商品信息发布成功!", Toast.LENGTH_SHORT).show();
                         finish();

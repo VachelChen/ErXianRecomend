@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mytry32.R;
 import com.example.mytry32.bean.Commodity;
+import com.example.mytry32.using;
 import com.example.mytry32.util.CommodityDbHelper;
 
 import java.io.ByteArrayOutputStream;
@@ -56,10 +57,10 @@ public class Fb_1 extends AppCompatActivity {
             }
         });
         tvStuId = findViewById(R.id.tv_student_id);
-        tvStuId.setText("By."+this.getIntent().getStringExtra("user_id"));
+        tvStuId.setText("By."+ using.userid);
         etTitle = findViewById(R.id.fb_bt1);
         etPrice = findViewById(R.id.fb_jiage1);
-        etPhone = findViewById(R.id.fb_lianxifangshi1);
+        etPhone = findViewById(R.id.fb_phone);
         etDescription = findViewById(R.id.editText17);
         spType = "闲置";
         Button btnPublish = findViewById(R.id.submit2);

@@ -61,6 +61,7 @@ public class Tab1 extends Fragment {
         dbHelper = new CommodityDbHelper(getContext(), CommodityDbHelper.DB_NAME, null, 1);
         allCommodities = dbHelper.readCommodityType("闲置");
 
+        //Toast.makeText(this.getContext(),allCommodities.get(0).getPhone(),Toast.LENGTH_SHORT).show();
 
         Adapter_1 adapter_1 = new Adapter_1(getContext(),allCommodities);//还没有传参数！！！
         recyclerView.setAdapter(adapter_1);
