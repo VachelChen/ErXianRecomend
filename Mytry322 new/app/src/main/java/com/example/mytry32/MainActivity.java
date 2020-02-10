@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         View headerLayout = navigationView.getHeaderView(0);
-
         final Bundle bundle = this.getIntent().getExtras();
         final TextView tvStuNumber = headerLayout.findViewById(R.id.daohang_username);
         String name ="";
@@ -56,17 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab2 = findViewById(R.id.fab2);
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                Snackbar.make(view, "Replace with your own", Snackbar.LENGTH_LONG)//
-//                        .setAction("Action", null).show();
-            }
-        });
-
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -75,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
+
+//        ToolsFragment toolsFragment = new ToolsFragment();
+//        Bundle bundlef = new Bundle();
+//        bundlef.putSerializable("name",name);
+//        toolsFragment.setArguments(bundlef);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);

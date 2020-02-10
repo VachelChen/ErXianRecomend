@@ -51,10 +51,15 @@ public class login extends AppCompatActivity {
                         //如果可以找到,则输出登录成功,并跳转到主界面
                         if(user.getUsername().equals(EtStuNumber.getText().toString()) && user.getPassword().equals(EtStuPwd.getText().toString()) ) {
                             flag = true;
+
                             Toast.makeText(login.this,"恭喜你登录成功!",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(login.this,MainActivity.class);
                             Bundle bundle = new Bundle();
                             username = EtStuNumber.getText().toString();
+
+                            using u = new using();
+                            u.setUserid(username);
+
                             bundle.putString("username",username);
                             intent.putExtras(bundle);
                             startActivity(intent);

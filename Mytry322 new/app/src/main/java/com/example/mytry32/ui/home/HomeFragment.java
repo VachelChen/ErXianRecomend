@@ -79,6 +79,11 @@ public class HomeFragment extends Fragment implements TabLayout.OnTabSelectedLis
         isGetData = false;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isGetData = false;
+    }
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
