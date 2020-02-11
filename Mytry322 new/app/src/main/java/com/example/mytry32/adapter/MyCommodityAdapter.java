@@ -74,7 +74,7 @@ public class MyCommodityAdapter extends BaseAdapter {
     //定义静态类,包含每一个item的所有元素
     static class ViewHolder {
         ImageView ivCommodity;
-        TextView tvTitle,tvType,tvDescription,tvPrice;
+        TextView tvTitle,tvDescription,tvPrice;
 
         public ViewHolder(View itemView, Commodity commodity) {
             tvTitle = itemView.findViewById(R.id.tv_name);

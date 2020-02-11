@@ -95,10 +95,10 @@ public class MyCollectionDbHelper extends SQLiteOpenHelper {
      * @param description 描述
      * @param price 价格
      */
-    public void deleteMyCollection(String title, String description, float price) {
+    public void deleteMyCollection(String title, String description, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         if(db.isOpen()) {
-            db.delete(DB_NAME,"title=? and description=? and price=?",new String[]{title,description, String.valueOf(price)});
+            db.delete(DB_NAME,"title=? and description=? and price=?",new String[]{title,description,price});
             db.close();
         }
     }

@@ -6,15 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mytry32.R;
+import com.example.mytry32.adapter.MyCommodityAdapter;
+import com.example.mytry32.bean.Commodity;
+import com.example.mytry32.using;
+import com.example.mytry32.util.CommodityDbHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,49 +29,64 @@ public class MyobjectFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
 
+    ListView lvMyCommodity;
+    List<Commodity> myCommodities = new ArrayList<>();
+    TextView tvStuId;
+
+    CommodityDbHelper dbHelper;
+
+    MyCommodityAdapter adapter;
+
+    String name;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_myobject, container, false);
 
-        ListView listView=(ListView)root.findViewById(R.id.myitems);
-
-        //从相应数据类抽取的数据！！！
-        List<String> list = new ArrayList<String>();
-        list.add("闲置：闲置出售样例 1");//测试样例
-        list.add("闲置：闲置出售样例 2");
-        list.add("拼拼：品奶茶");
-        list.add("组队：大学生创新创业比赛");
-        ///可以一直添加，在真机运行后可以下拉列表
-
-       listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-           @Override
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText (getContext(),position+"你选择了："+id,Toast.LENGTH_LONG).show ();
-               showNormalDialog1(position);//弹出对话框！！
-           }
-       } );
-
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(adapter);
-
+        name= using.userid;
 
         return root;
     }
 
-    private void showNormalDialog1(int pos) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder (getContext());
-        dialog.setMessage ("要撤回发布嘛？");
-        dialog.setPositiveButton ("确定", new DialogInterface.OnClickListener () {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        tvStuId = getView().findViewById(R.id.tv_stu_id);
+        tvStuId.setText(name);
+        lvMyCommodity = getView().findViewById(R.id.lv_my_commodity);
+        adapter = new MyCommodityAdapter(getContext());
+        dbHelper = new CommodityDbHelper(getContext(),CommodityDbHelper.DB_NAME,null,1);
+        myCommodities = dbHelper.readMyCommodities(tvStuId.getText().toString());
+        adapter.setData(myCommodities);
+        lvMyCommodity.setAdapter(adapter);
+        //长按点击事件
+        lvMyCommodity.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //业务处理！！！
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                //注意,这里的content不能写getApplicationContent();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("提示:").setMessage("确认删除此商品项吗?").setIcon(R.drawable.icon_user).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        //根据商品名称,商品描述和价格执行删除操作
+                        Commodity commodity = (Commodity) adapter.getItem(position);
+                        dbHelper.deleteMyCommodity(commodity.getTitle(),commodity.getDescription(),commodity.getPrice());
+                        //数据一样,可以直接用,关联删除
+                        //dbHelper2.deleteMyCollection(commodity.getTitle(),commodity.getDescription(),commodity.getPrice());
+                        Toast.makeText(getActivity(),"删除成功!",Toast.LENGTH_SHORT).show();
+                    }
+                }).show();
+                return false;
             }
         });
-        //如果取消，就什么都不做，关闭对话框
-        dialog.setNegativeButton ("取消",null);
-        dialog.show ();
+
     }
 }

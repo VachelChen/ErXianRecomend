@@ -133,10 +133,10 @@ public class CommodityDbHelper extends SQLiteOpenHelper {
      * @param description 商品描述
      * @param price 商品价格
      */
-    public void deleteMyCommodity(String title, String description, float price) {
+    public void deleteMyCommodity(String title, String description, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         if(db.isOpen()) {
-            db.delete(DB_NAME,"title=? and description=? and price=?",new String[]{title,description, String.valueOf(price)});
+            db.delete(DB_NAME,"title=? and description=? and price=?",new String[]{title,description,price});
             db.close();
         }
     }

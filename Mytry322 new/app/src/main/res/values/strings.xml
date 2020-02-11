@@ -3,13 +3,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Thanks</string>
-    <string name="nav_header_subtitle">Thank you for your support</string>
+    <string name="nav_header_subtitle">做自己的主人。</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="zhuxiao">注销</string>
 
     <string name="menu_home">主页</string>
     <string name="menu_gallery">我的发布</string>
-    <string name="menu_slideshow">关于</string>
+    <string name="menu_slideshow">我的收藏</string>
     <string name="menu_tools">我的详情</string>
     <string name="menu_share">分享</string>
     <string name="menu_send">关于二闲</string>

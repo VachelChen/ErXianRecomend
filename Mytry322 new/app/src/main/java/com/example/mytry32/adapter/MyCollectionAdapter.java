@@ -74,18 +74,16 @@ public class MyCollectionAdapter extends BaseAdapter {
     //定义静态类,包含每一个item的所有元素
     static class ViewHolder {
         ImageView ivCommodity;
-        TextView tvTitle,tvDescription,tvPrice,tvPhone;
+        TextView tvTitle,tvDescription,tvPrice;
 
         public ViewHolder(View itemView, Collection collection) {
             tvTitle = itemView.findViewById(R.id.tv_name);
             tvPrice = itemView.findViewById(R.id.tv_price);
             tvDescription = itemView.findViewById(R.id.tv_description);
-            tvPhone = itemView.findViewById(R.id.tv_phone);
             ivCommodity = itemView.findViewById(R.id.iv_commodity);
             tvTitle.setText(collection.getTitle());
             tvDescription.setText(collection.getDescription());
-            tvPrice.setText(String.valueOf(collection.getPrice())+"元");
-            tvPhone.setText(collection.getPhone());
+            tvPrice.setText(collection.getPrice()+"元");
             byte[] picture = collection.getPicture();
             Bitmap img = BitmapFactory.decodeByteArray(picture,0,picture.length);
             ivCommodity.setImageBitmap(img);
