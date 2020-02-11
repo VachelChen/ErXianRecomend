@@ -73,9 +73,6 @@ public class Adapter_1 extends RecyclerView.Adapter<Adapter_1.myViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent=new Intent(context, Xq_1.class);
-//                //跳转如何携带信息 ， 调用position 进入相关页面！！！数据流如何！！？
-//                context.startActivity(intent);
                 Bundle bundle1 = new Bundle();
                 bundle1.putInt("position",position);
                 bundle1.putByteArray("picture",data.get(position).getPicture());
