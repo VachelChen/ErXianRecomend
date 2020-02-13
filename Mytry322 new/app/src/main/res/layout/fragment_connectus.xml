@@ -1,68 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_about_app"
+        android:text="关于系统"
+        android:textSize="40sp"
+        android:textColor="@color/colorWhite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="#008577"/>
+    <TextView
+        android:id="@+id/tv_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开发目的:"
+        android:textSize="30sp"
+        android:layout_below="@id/tv_about_app"
+        android:layout_marginTop="10dp"
+        android:textColor="#008577"
+        android:layout_marginStart="5dp"/>
+    <TextView
+        android:id="@+id/tv_goal_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="该小型app致力于在校园范围内搭建一个二手商品交易、商品拼单、比赛组队的平台,安全性较高,支持面对面交易,极大的便利了学生们的生活。"
+        android:layout_below="@id/tv_goal"
+        android:textSize="22sp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/tv_developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主要开发人员:"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_goal_content"
+        android:textColor="#008577"
+        android:layout_marginStart="5dp"/>
+    <TextView
+        android:id="@+id/tv_developer_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="罗京、陈嘉辉"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_developer"
+        android:layout_marginStart="5dp"/>
+    <TextView
+        android:id="@+id/tv_college"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(北京林业大学信息学院)"
+        android:textSize="18sp"
+        android:layout_below="@id/tv_developer_nickname"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"/>
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="系统版本:"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tv_college"
+        android:textColor="#008577"
+        android:layout_marginStart="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="android app v1.0.0"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_version"
+        android:layout_marginStart="5dp"/>
 
-        <TextView
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/textView23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="您的联系方式：" />
 
-        <EditText
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/editText13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Mail/QQ/Phone"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/textView24"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="内容：" />
-
-        <EditText
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/editText16"
-            android:layout_width="match_parent"
-            android:layout_height="500px"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/connectsend"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#008577"
-                android:layout_weight="1"
-                android:textColor="#FFF"
-                android:text="发送" />
-        </LinearLayout>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
